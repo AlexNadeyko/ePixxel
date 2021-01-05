@@ -32,7 +32,7 @@
             
             <div class="nav_space"></div>
 
-            <a href="#get_started" class="nav_button" style="font-family: 'Nunito', sans-serif; font-weight:300;">Get Started</a>
+            <a href="{{ url_for('main_page', image_name='None') }}" class="nav_button" style="font-family: 'Nunito', sans-serif; font-weight:300;">Get Started</a>
 
             <a href="#sign_in" class="nav_link" style="font-family: 'Nunito', sans-serif; font-weight:300;">Sign in</a>
             <a href="#sign_up" class="nav_link" style="font-family: 'Nunito', sans-serif; font-weight:300;">Sign up</a>
@@ -48,9 +48,10 @@
         <div class="description_welcome_text">
             <p style="font-family: 'Nunito', sans-serif; font-weight: 300;">Unlock the potential of
                 your images with new technologies. Here and now.</p>
-          </div>
+        </div>
 
-        <button class="btn" style="font-family: 'Nunito', sans-serif; font-weight:300;">Get Started</button>
+        <a href="{{ url_for('main_page', image_name='None') }}" class="btn" style="font-family: 'Nunito', sans-serif; font-weight:300;">Get started</a>
+<!--        <button class="btn" style="font-family: 'Nunito', sans-serif; font-weight:300;">Get Started</button>-->
        
     
 

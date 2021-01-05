@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Image Editor - ePixxel</title>
+
+<!--    <link rel="stylesheet" href="../static/css_styles/main_page.css">-->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;700&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital@1&display=swap" rel="stylesheet">
+
+     <link rel="stylesheet" href="{{ url_for('static', filename='/css_styles/main_page.css')}}">
+
+    <style>
+        body, html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+        }
+    </style>
+
+    <script>
+            function setup() {
+                document.getElementById('buttonId1').addEventListener('click', openDialog);
+                function openDialog() {
+                    document.getElementById('fileId').click();
+                }
+                document.getElementById('fileId').addEventListener('change', submitForm);
+                function submitForm() {
+                    document.getElementById('formId').submit();
+                }
+            }
+        </script>
+</head>
+
+<!-- <body style="padding: 60px 0;"> -->
+<body onload="setup()">
+    <header class="site-nav-transparent" id=site_nav>
+        
+        <div class="navbar centered-column-width"  id="mynav">
+
+            <a href="{{ url_for('start_page')}}" class="nav_logo"></a>
+            
+            <div class="nav_space"></div>
+            
+            <form id="formId" method="POST" enctype="multipart/form-data">
+                <input id="fileId" type="file" name="file" hidden>
+                <input id="buttonId"  type="button" class="btn" value="Open">
+                <input type="submit" value="Submit" hidden>
+            </form>
+
+             <button id="buttonId1" type="button" class="btn" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-right: 10px;">Click Me!</button>
+
+            <a href="#open" class="nav_button" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-right: 10px;">Open</a>
+            
+            <a href="#save" class="nav_button" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-left: 10px;">Save</a>
+
+            <div class="nav_space"></div>
+
+            <a href="#sign_in" class="nav_link" style="font-family: 'Nunito', sans-serif; font-weight:300;">Sign in</a>
+            <a href="#sign_up" class="nav_link" style="font-family: 'Nunito', sans-serif; font-weight:300;">Sign up</a>
+
+          </div>
+    </header>
+
+    <main style="position: absolute; top: 60px; left: 0px; width: 100%; height: calc(100% - 60px);">
+        <div class="main_section">
+            <div class="sidenav">
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Clients</a>
+                <a href="#">Contact</a>
+              </div>
+    
+            <div class="workspace">
+                {% if filename != 'None' %}
+                    <img class="image_workspace" src="{{url_for('upload', filename=filename)}}">
+                {% else %}
+                    <div class="text_workspace">
+                        <p style="font-family: 'Nunito', sans-serif; font-weight: 300;">Image is not selected!</p>
+                    </div>
+<!--                    <p>Image is not selected!</p>-->
+                {% endif %}
+            </div>
+        </div>
+        
+
+
+    </main>
+
+
+</body>
+
+</html>
