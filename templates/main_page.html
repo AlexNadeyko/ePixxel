@@ -48,15 +48,23 @@
             
             <form id="formId" method="POST" enctype="multipart/form-data">
                 <input id="fileId" type="file" name="file" hidden>
-                <input id="buttonId"  type="button" class="btn" value="Open">
+<!--                <input id="buttonId"  type="button" class="btn" value="Open">-->
                 <input type="submit" value="Submit" hidden>
             </form>
 
-             <button id="buttonId1" type="button" class="btn" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-right: 10px;">Click Me!</button>
+             <button id="buttonId1" type="button" class="btn" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-right: 10px;">Open</button>
 
-            <a href="#open" class="nav_button" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-right: 10px;">Open</a>
-            
-            <a href="#save" class="nav_button" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-left: 10px;">Save</a>
+<!--            <a href="#open" class="nav_button" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-right: 10px;">Open</a>-->
+
+            {% if filename != 'None' %}
+                    <a href="{{url_for('download', filename=filename)}}" class="nav_button" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-left: 10px;">Save</a>
+                {% else %}
+                    <a href="#" class="nav_button-inactive" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-left: 10px;">Save</a>
+<!--                    <p>Image is not selected!</p>-->
+                {% endif %}
+
+
+<!--            <a href= class="nav_button" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-left: 10px;">Save</a>-->
 
             <div class="nav_space"></div>
 
@@ -69,10 +77,18 @@
     <main style="position: absolute; top: 60px; left: 0px; width: 100%; height: calc(100% - 60px);">
         <div class="main_section">
             <div class="sidenav">
-                <a href="#">About</a>
-                <a href="#">Services</a>
-                <a href="#">Clients</a>
-                <a href="#">Contact</a>
+<!--                -->
+                <form id="formImageFunctionsId" action="{{ url_for('operation', filename=filename, mode='operation') }}" method="POST" enctype="multipart/form-data">
+                    <button id="buttonId111" type="submit" class="btn" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-right: 10px;">Open</button>
+
+            </form>
+
+
+
+
+<!--                -->
+
+
               </div>
     
             <div class="workspace">

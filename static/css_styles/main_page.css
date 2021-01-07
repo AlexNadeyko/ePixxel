@@ -148,7 +148,84 @@
   border-radius: 20px;
   border: none;
   background-image: linear-gradient(to right, #653faa ,#3361d4);
-} 
+}
+
+.nav_button-inactive:link{
+  color:  #f2f2f2;
+  background-image: linear-gradient(to right, #8860d0 ,#5680e9);
+  background-color: #8860d0; /* For browsers that do not support gradients */
+  border: 2px solid green;
+
+  opacity: 0.9;
+
+  text-align: center;
+  text-decoration: none;
+
+  padding: 8px 25px;
+  font-size: 18px;
+  border-radius: 20px;
+  border: none;
+
+  pointer-events: none;
+  cursor:pointer;
+}
+
+.nav_button-inactive:visited {
+  color:  #f2f2f2;
+  background-image: linear-gradient(to right, #8860d0 ,#5680e9);
+  background-color: #8860d0; /* For browsers that do not support gradients */
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  opacity: 0.9;
+
+  padding: 8px 25px;
+  font-size: 18px;
+  border-radius: 20px;
+  border: none;
+
+  pointer-events: none;
+  cursor:pointer;
+}
+
+/* mouse over link */
+.nav_button-inactive:hover {
+  color:  #f2f2f2;
+  background-image: linear-gradient(to right, #8860d0 ,#5680e9);
+  background-color: #8860d0; /* For browsers that do not support gradients */
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+
+  padding: 8px 25px;
+  font-size: 18px;
+  border-radius: 20px;
+  border: none;
+  opacity: 0.8;
+
+  pointer-events: none;
+  cursor:pointer;
+}
+
+/* selected link */
+.nav_button-inactive:active {
+  color:  #f2f2f2;
+  background-image: linear-gradient(to right, #8860d0 ,#5680e9);
+  background-color: #8860d0; /* For browsers that do not support gradients */
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  opacity: 0.9;
+
+  padding: 8px 25px;
+  font-size: 18px;
+  border-radius: 20px;
+  border: none;
+  background-image: linear-gradient(to right, #653faa ,#3361d4);
+
+  pointer-events: none;
+  cursor:pointer;
+}
 
 .main_section {
     /* margin-top: 70px; */
@@ -207,16 +284,19 @@
     text-decoration: none;
     font-size: 18px;
     border-radius: 20px;
+    cursor:pointer;
 }
 
 .navbar .btn:hover {
     background-image: linear-gradient(to right, #8860d0 ,#5680e9);
     opacity: 0.9;
+    cursor:pointer;
 
   }
 
 .navbar .btn:active {
     background-image: linear-gradient(to right, #653faa ,#3361d4);
+    cursor:pointer;
 }
 
 .section_image{
