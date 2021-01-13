@@ -2,9 +2,9 @@
     padding: 16px;
     margin-top: 30px;
     height: 1500px; /* Used in this example to enable scrolling */
-  }
+}
 
-.centered-column-width{
+.centered-column-width {
   width: 100%;
   max-width: 1232px;
   margin: 0 auto;
@@ -19,18 +19,16 @@
   z-index: 9999;
 }
 
-.site-nav-scrolling{
+.site-nav-scrolling {
   /* background-color: white; */
   background-image: linear-gradient(to right, #c5b8fe ,#87d4f2);
   background-color:#87d4f2; /* For browsers that do not support gradients */
-
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   z-index: 9999;
 }
-
 
 /* Add a black background color to the top navigation */
 .topnav-colored {
@@ -41,10 +39,10 @@
     top: 0; /* Position the navbar at the top of the page */
     width: 100%;
     /* position: relative; */
-  }
+}
   
   /* Style the links inside the navigation bar */
-  .topnav-colored a {
+.topnav-colored a {
     float: left;
     color: #f2f2f2;
     text-align: center;
@@ -52,68 +50,55 @@
     text-decoration: none;
     font-size: 17px;
     display: block;
-  }
+}
   
   /* Change the color of links on hover */
-  .topnav-colored a:hover {
+.topnav-colored a:hover {
     background-color: #ddd;
     color: black;
-  }
+}
   
   /* Add a color to the active/current link */
-  .topnav-colored a.active {
+.topnav-colored a.active {
     background-color: #4CAF50;
     color: white;
-  }
+}
 
-
-  
-
-
-  
-
-  
-
-  
-  .navbar{
-    
+.navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
     overflow: hidden;
     height: 70px;
-  
 }
-  
-  
+
   /* Change the color of links on hover */
-  .topnav-transparent a:hover {
+.topnav-transparent a:hover {
     background-color: #ddd;
     color: black;
-  }
+}
   
   /* Add a color to the active/current link */
-  .topnav-transparent a.active {
+.topnav-transparent a.active {
     background-color: #4CAF50;
     color: white;
-  }
+}
 
-  .nav_logo{
+.nav_logo{
     background: url("../resources/logo_white_text_2.png");
     height: 51px;
     width: 183px;
-  }
+}
 
-  .nav_space{
+.nav_space {
     margin: auto;
-  }
+}
 
 /* unvisited link */
 .nav_link:link {
   color:  #f2f2f2;
   background-color: transparent;
- 
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
@@ -156,10 +141,8 @@
   background-image: linear-gradient(to right, #8860d0 ,#5680e9);
   background-color: #8860d0; /* For browsers that do not support gradients */
   border: 2px solid green;
-  
   text-align: center;
   text-decoration: none;
-
   padding: 8px 25px;
   font-size: 18px;
   border-radius: 20px;
@@ -174,7 +157,6 @@
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
-
   padding: 8px 25px;
   font-size: 18px;
   border-radius: 20px;
@@ -189,7 +171,6 @@
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
-
   padding: 8px 25px;
   font-size: 18px;
   border-radius: 20px;
@@ -205,7 +186,6 @@
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
-
   padding: 8px 25px;
   font-size: 18px;
   border-radius: 20px;
@@ -213,12 +193,7 @@
   background-image: linear-gradient(to right, #653faa ,#3361d4);
 } 
 
-
-
-  
-
-
-  .welcome_image {
+.welcome_image {
     /* The image used */
     background-image: url("../resources/welcome_image_1.png");
   
@@ -230,12 +205,10 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
+}
 
-     position: relative;
-  }
-
- 
-  .description_welcome_text {
+.description_welcome_text {
     text-align: center;
     /* border: 3px solid green; */
     color: #f2f2f2;
@@ -244,17 +217,16 @@
     left: 50%; 
     top: 84%;
     transform: translate(-50%, -84%)
+}
 
-  }
-
-  .logo_image {
+.logo_image {
     position: absolute;
     left: 50%; 
     top: 30%;
     transform: translate(-50%, -30%);
-  }
+}
 
-  .welcome_image .btn {
+.welcome_image .btn {
     position: absolute;
     top: 94%;
     left: 50%;
@@ -268,97 +240,73 @@
     text-decoration: none;
     font-size: 20px;
     border-radius: 20px;
+}
 
-
-  }
-
-  .welcome_image .btn:hover {
+.welcome_image .btn:hover {
     background-image: linear-gradient(to right, #8860d0 ,#5680e9);
     opacity: 0.9;
-    
-  }
+}
 
 .welcome_image .btn:active {
     background-image: linear-gradient(to right, #653faa ,#3361d4);
 }
 
-.section{
+.section {
   position:relative;
 }
 
-/* .section-blue{
-  background-color: #5680e9;
-} */
-
-.section-blue{
-  /* background-color: #87d4f2; */
+.section-blue {
   background-color: #5680E9;
 }
 
-
-
-.section-purple{
-  /* background-color: #c5b8fe; */
+.section-purple {
   background-color: #8860D0;
 }
 
-.section_grid{
+.section_grid {
   display: grid;
   grid-gap: 0 1rem;
   grid-template-columns: repeat(12,1fr);
 }
 
-/* .section_text{
-  grid-column: 8/13;
-  margin-bottom: 0;
-  order: 1;
-} */
-
 .section_heading{
-  /* margin-top: 0; */
-
 }
 
-/* .section_figure{
-  grid-column: 1/7;
-  order: 0;
-} */
-
-.section_align_left_figure{
+.section_align_left_figure {
   order: 0;
   grid-column: 1/7;
 }
 
-.section_align_right_figure{
+.section_align_right_figure {
   order: 1;
   grid-column: 7/13;
 }
 
-.section_align_right_text{
+.section_align_right_text {
   order: 1;
   grid-column: 8/13;
 }
 
-.section_align_left_text{
+.section_align_left_text {
   order: 1;
   grid-column: 1/6;
 }
 
-.section_text{
+.section_text {
   font-family: 'Nunito', sans-serif;
   font-weight: 300;
   color: #f2f2f2;
-  /* margin-bottom: 0; */
 }
 
-.section_main_text{
+.section_main_text {
   font-size: 18px;
 }
 
-.section_figure{
+.section_figure {
   margin: 0px;
 }
-.section_image{
+
+.section_image {
   height: auto;
   width: 100%;
 }

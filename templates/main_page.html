@@ -3,15 +3,12 @@
 <head>
     <title>Image Editor - ePixxel</title>
 
-<!--    <link rel="stylesheet" href="../static/css_styles/main_page.css">-->
-
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;700&display=swap" rel="stylesheet"> 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital@1&display=swap" rel="stylesheet">
-
      <link rel="stylesheet" href="{{ url_for('static', filename='/css_styles/main_page.css')}}">
 
     <style>
@@ -36,77 +33,145 @@
         </script>
 </head>
 
-<!-- <body style="padding: 60px 0;"> -->
 <body onload="setup()">
     <header class="site-nav-transparent" id=site_nav>
         
         <div class="navbar centered-column-width"  id="mynav">
-
             <a href="{{ url_for('start_page')}}" class="nav_logo"></a>
             
             <div class="nav_space"></div>
-            
+
             <form id="formId" method="POST" enctype="multipart/form-data">
                 <input id="fileId" type="file" name="file" hidden>
-<!--                <input id="buttonId"  type="button" class="btn" value="Open">-->
                 <input type="submit" value="Submit" hidden>
             </form>
 
              <button id="buttonId1" type="button" class="btn" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-right: 10px;">Open</button>
 
-<!--            <a href="#open" class="nav_button" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-right: 10px;">Open</a>-->
-
             {% if filename != 'None' %}
                     <a href="{{url_for('download', filename=filename)}}" class="nav_button" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-left: 10px;">Save</a>
                 {% else %}
                     <a href="#" class="nav_button-inactive" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-left: 10px;">Save</a>
-<!--                    <p>Image is not selected!</p>-->
                 {% endif %}
-
-
-<!--            <a href= class="nav_button" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-left: 10px;">Save</a>-->
 
             <div class="nav_space"></div>
 
-            <a href="#sign_in" class="nav_link" style="font-family: 'Nunito', sans-serif; font-weight:300;">Sign in</a>
-            <a href="#sign_up" class="nav_link" style="font-family: 'Nunito', sans-serif; font-weight:300;">Sign up</a>
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">Settings<span class="caret down"></span></button>
 
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#sign_in"  style="font-family: 'Nunito', sans-serif; font-weight:300;">Sign in</a>
+                    <a href="#sign_up"  style="font-family: 'Nunito', sans-serif; font-weight:300;">Sign up</a>
+                </div>
+
+            </div>
           </div>
     </header>
 
     <main style="position: absolute; top: 60px; left: 0px; width: 100%; height: calc(100% - 60px);">
         <div class="main_section">
+
             <div class="sidenav">
-<!--                -->
-                <form id="formImageFunctionsId" action="{{ url_for('operation', filename=filename, mode='operation') }}" method="POST" enctype="multipart/form-data">
-                    <button id="buttonId111" type="submit" class="btn" style="font-family: 'Nunito', sans-serif; font-weight:300; margin-right: 10px;">Open</button>
+                <button id="buttonColorSpace" class="btn btn-icons tooltip" onclick="openSideNavTools(this)"><span id="colorSpace-tooltiptext" class="tooltiptext">Colorspaces</span></button>
+                <button id="buttonTransformation" class="btn btn-icons tooltip" onclick="openSideNavTools(this)"><span id="transformation-tooltiptext" class="tooltiptext">Geometric Transformations</span></button>
+                <button id="buttonSmooth" class="btn btn-icons tooltip" onclick="openSideNavTools(this)"><span id="smooth-tooltiptext" class="tooltiptext">Smoothing</span></button>
+                <button id="buttonEdge" class="btn btn-icons tooltip" onclick="openSideNavTools(this)"><span id="edge-tooltiptext" class="tooltiptext">Edge Detection</span></button>
+                <button id="buttonGradient" class="btn btn-icons tooltip" onclick="openSideNavTools(this)"><span id="gradient-tooltiptext" class="tooltiptext">Gradients</span></button>
 
-            </form>
+                <div id="sideNavToolsColorSpace" class="sidenav-tools">
+                    <button id="buttonCloseColorSpace" class="closebtn" onclick="closeSideNavTools(this)">&times;</button>
+                    <form id="formImageFunctionsId" action="{{ url_for('operation', filename=filename, mode='operation') }}" method="POST" enctype="multipart/form-data">
+                        <button type="submit" class="btn-images" value="convertToHSV" name="colorButton" style="background-image: url({{url_for('static', filename='/resources/hsv.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">To HSV</button>
+                        <button type="submit" class="btn-images" value="convertToGRAY" name="colorButton" style="background-image: url({{url_for('static', filename='/resources/gray.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">To Gray</button>
+                        <button type="submit" class="btn-images" value="convertToLAB" name="colorButton" style="background-image: url({{url_for('static', filename='/resources/lab.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">To LAB</button>
+                        <button type="submit" class="btn-images" value="convertToRGB" name="colorButton" style="background-image: url({{url_for('static', filename='/resources/rgb.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">To RGB</button>
+                    </form>
+                </div>
 
+                <div id="sideNavToolsTransformation" class="sidenav-tools">
+                    <button id="buttonCloseTransformation" class="closebtn" onclick="closeSideNavTools(this)">&times;</button>
+                </div>
 
+                <div id="sideNavToolsSmooth" class="sidenav-tools">
+                    <button id="buttonCloseSmooth" class="closebtn" onclick="closeSideNavTools(this)">&times;</button>
+                </div>
 
+                <div id="sideNavToolsEdge" class="sidenav-tools">
+                    <button id="buttonCloseEdge" class="closebtn" onclick="closeSideNavTools(this)">&times;</button>
+                </div>
 
-<!--                -->
-
+                <div id="sideNavToolsGradient" class="sidenav-tools">
+                    <button id="buttonCloseGradient" class="closebtn" onclick="closeSideNavTools(this)">&times;</button>
+                </div>
 
               </div>
     
             <div class="workspace">
+
                 {% if filename != 'None' %}
                     <img class="image_workspace" src="{{url_for('upload', filename=filename)}}">
                 {% else %}
                     <div class="text_workspace">
                         <p style="font-family: 'Nunito', sans-serif; font-weight: 300;">Image is not selected!</p>
                     </div>
-<!--                    <p>Image is not selected!</p>-->
                 {% endif %}
+
             </div>
         </div>
-        
-
 
     </main>
 
+<script>
+
+function openSideNavTools(x) {
+
+    if(x.id == "buttonColorSpace"){
+        document.getElementById("sideNavToolsColorSpace").style.width = "250px";
+    }else if(x.id == "buttonTransformation"){
+        document.getElementById("sideNavToolsTransformation").style.width = "250px";
+    }else if(x.id == "buttonSmooth"){
+        document.getElementById("sideNavToolsSmooth").style.width = "250px";
+    }else if(x.id == "buttonEdge"){
+        document.getElementById("sideNavToolsEdge").style.width = "250px";
+    }else if(x.id == "buttonGradient"){
+        document.getElementById("sideNavToolsGradient").style.width = "250px";
+    }
+}
+
+function closeSideNavTools(x) {
+
+    if(x.id == "buttonCloseColorSpace"){
+        document.getElementById("sideNavToolsColorSpace").style.width = "0";
+    }else if(x.id == "buttonCloseTransformation"){
+        document.getElementById("sideNavToolsTransformation").style.width = "0";
+    }else if(x.id == "buttonCloseSmooth"){
+        document.getElementById("sideNavToolsSmooth").style.width = "0";
+    }else if(x.id == "buttonCloseEdge"){
+        document.getElementById("sideNavToolsEdge").style.width = "0";
+    }else if(x.id == "buttonCloseGradient"){
+        document.getElementById("sideNavToolsGradient").style.width = "0";
+    }
+}
+
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+</script>
 
 </body>
 

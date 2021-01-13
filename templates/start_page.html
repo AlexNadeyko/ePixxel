@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
     <title>Image Editor - ePixxel</title>
-    <link rel="stylesheet" href="../css_styles/start_page.css">
 
+    <link rel="stylesheet" href="../css_styles/start_page.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;700&display=swap" rel="stylesheet"> 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital@1&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="{{ url_for('static', filename='/css_styles/start_page.css')}}">
 
     <style>
@@ -25,24 +24,16 @@
 <body>
 
     <header class="site-nav-transparent" id=site_nav>
-        
         <div class="navbar centered-column-width"  id="mynav">
-
             <a href="{{ url_for('start_page')}}" class="nav_logo"></a>
-            
             <div class="nav_space"></div>
-
             <a href="{{ url_for('main_page', image_name='None') }}" class="nav_button" style="font-family: 'Nunito', sans-serif; font-weight:300;">Get Started</a>
-
             <a href="#sign_in" class="nav_link" style="font-family: 'Nunito', sans-serif; font-weight:300;">Sign in</a>
             <a href="#sign_up" class="nav_link" style="font-family: 'Nunito', sans-serif; font-weight:300;">Sign up</a>
-
           </div>
     </header>
 
     <div class="welcome_image">
-
-<!--        <img src="../resources/logo_without_text.png" alt="Logo" class="logo_image"> -->
         <img src="{{url_for('static', filename='/resources/logo_without_text.png')}}" alt="Logo" class="logo_image">
         
         <div class="description_welcome_text">
@@ -51,18 +42,12 @@
         </div>
 
         <a href="{{ url_for('main_page', image_name='None') }}" class="btn" style="font-family: 'Nunito', sans-serif; font-weight:300;">Get started</a>
-<!--        <button class="btn" style="font-family: 'Nunito', sans-serif; font-weight:300;">Get Started</button>-->
-       
-    
-
-          
       </div>
 
     <main>
-        
-
         <section class="section section-blue">
             <div class="centered-column-width section_grid">
+
                 <div class="section_align_right_text section_text">
                     <h2 class="section_heading" style="font-size: 30px;">It's fun!</h2>
                     <p class="section_main_text">Fun is literally BeFunky's middle name (no, really! be-FUN-ky)
@@ -75,14 +60,17 @@
                              on your computer! Taking pictures is fun – shouldn't your photo editor be fun, too?
                             </p>
                 </div>
+
                 <figure class="section_align_left_figure section_figure">
                     <img class="section_image" src="{{url_for('static', filename='/resources/nature.jpg')}}">
                 </figure>
+
             </div>
         </section>
 
         <section class="section section-purple">
             <div class="centered-column-width section_grid">
+
                 <div class="section_align_left_text section_text">
                     <h2 class="section_heading" style="font-size: 30px;">It's fun!</h2>
                     <p class="section_main_text">Fun is literally BeFunky's middle name (no, really! be-FUN-ky)
@@ -95,18 +83,17 @@
                              on your computer! Taking pictures is fun – shouldn't your photo editor be fun, too?
                             </p>
                 </div>
+
                 <figure class="section_align_right_figure">
                     <img class="section_image" src="{{url_for('static', filename='/resources/nature_2.jpg')}}">
                 </figure>
+
             </div>
         </section>
 
-
-
-
-
         <section class="section section-blue">
             <div class="centered-column-width section_grid">
+
                 <div class="section_text section_align_right_text">
                     <h2 class="section_heading" style="font-size: 30px;">It's fun!</h2>
                     <p class="section_main_text">Fun is literally BeFunky's middle name (no, really! be-FUN-ky)
@@ -119,14 +106,17 @@
                              on your computer! Taking pictures is fun – shouldn't your photo editor be fun, too?
                             </p>
                 </div>
+
                 <figure class="section_align_left_figure">
                     <img class="section_image" src="{{url_for('static', filename='/resources/nature_3.jpg')}}">
                 </figure>
+
             </div>
         </section>
 
         <section class="section section-purple">
             <div class="centered-column-width section_grid">
+
                 <div class="section_text section_align_left_text">
                     <h2 class="section_heading" style="font-size: 30px;">It's fun!</h2>
                     <p class="section_main_text">Fun is literally BeFunky's middle name (no, really! be-FUN-ky)
@@ -139,15 +129,17 @@
                              on your computer! Taking pictures is fun – shouldn't your photo editor be fun, too?
                             </p>
                 </div>
+
                 <figure class="section_align_right_figure">
                     <img class="section_image" src="{{url_for('static', filename='/resources/nature_4.jpg')}}">
                 </figure>
+
             </div>
         </section>
 
-
         <section class="section section-blue">
             <div class="centered-column-width section_grid">
+
                 <div class="section_text section_align_right_text">
                     <h2 class="section_heading" style="font-size: 30px;">It's fun!</h2>
                     <p class="section_main_text">Fun is literally BeFunky's middle name (no, really! be-FUN-ky)
@@ -160,14 +152,17 @@
                              on your computer! Taking pictures is fun – shouldn't your photo editor be fun, too?
                             </p>
                 </div>
+
                 <figure class="section_align_left_figure">
                     <img class="section_image" src="{{url_for('static', filename='/resources/nature_5.jpg')}}">
                 </figure>
+
             </div>
         </section>
 
         <section class="section section-purple">
             <div class="centered-column-width section_grid">
+
                 <div class="section_text section_align_left_text">
                     <h2 class="section_heading" style="font-size: 30px;">It's fun!</h2>
                     <p class="section_main_text">Fun is literally BeFunky's middle name (no, really! be-FUN-ky)
@@ -180,17 +175,17 @@
                              on your computer! Taking pictures is fun – shouldn't your photo editor be fun, too?
                             </p>
                 </div>
+
                 <figure class="section_align_right_figure">
                     <img class="section_image" src="{{url_for('static', filename='/resources/nature_6.jpg')}}">
                 </figure>
+
             </div>
         </section>
 
-
-
-
         <section class="section section-blue">
             <div class="centered-column-width section_grid">
+
                 <div class="section_text section_align_right_text">
                     <h2 class="section_heading" style="font-size: 30px;">It's fun!</h2>
                     <p class="section_main_text">Fun is literally BeFunky's middle name (no, really! be-FUN-ky)
@@ -203,64 +198,15 @@
                              on your computer! Taking pictures is fun – shouldn't your photo editor be fun, too?
                             </p>
                 </div>
+
                 <figure class="section_align_left_figure">
                     <img class="section_image" src="{{url_for('static', filename='/resources/nature_2.jpg')}}">
                 </figure>
+
             </div>
         </section>
-
-        
-
-        <section class="section section-purple">
-            <div class="centered-column-width section_grid">
-                <div class="section_text section_text">
-                    <h2 class="section_heading" style="font-size: 30px;">It's fun!</h2>
-                    <p class="section_main_text">Fun is literally BeFunky's middle name (no, really! be-FUN-ky)
-                         With BeFunky's Photo Editor, you can play with hundreds of amazing photo
-                          effects that you can't find anywhere else, like our world-famous Cartoonizer®,
-                           oil painting, and Digital Art effects. You can also add extra flair to your 
-                           photo with our huge library of customizable graphics, frames, overlays, and textures.
-                            And if adding text to photos is your thing, our Photo Editor has tons of fonts for
-                             you to choose from, including access to Google Fonts and any of the fonts stored 
-                             on your computer! Taking pictures is fun – shouldn't your photo editor be fun, too?
-                            </p>
-                </div>
-                <figure>
-                    <img class="section_image" src="../resources/logo_white_text_2.png">
-                </figure>
-            </div>
-        </section>
-
-
-
-       
-
-        <section class="section section-purple">
-            <div class="centered-column-width section_grid">
-                <div class="section_text">
-                    <h2 class="section_heading">It's fun!</h2>
-                    <p>Fun is literally BeFunky's middle name (no, really! be-FUN-ky)
-                         With BeFunky's Photo Editor, you can play with hundreds of amazing photo
-                          effects that you can't find anywhere else, like our world-famous Cartoonizer®,
-                           oil painting, and Digital Art effects. You can also add extra flair to your 
-                           photo with our huge library of customizable graphics, frames, overlays, and textures.
-                            And if adding text to photos is your thing, our Photo Editor has tons of fonts for
-                             you to choose from, including access to Google Fonts and any of the fonts stored 
-                             on your computer! Taking pictures is fun – shouldn't your photo editor be fun, too?
-                            </p>
-                </div>
-                <figure>
-                    <img class="section_image" src="../resources/logo_white_text_2.png">
-                </figure>
-            </div>
-        </section>
-
-
-
-
 
     </main>
-    
 
     <script type="text/javascript">
         var myNav = document.getElementById('site_nav');
@@ -278,6 +224,6 @@
             }
         };
     </script>
-</body>
 
+</body>
 </html>
