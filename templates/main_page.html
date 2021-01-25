@@ -68,10 +68,9 @@
           </div>
     </header>
 
-    <main style="position: absolute; top: 60px; left: 0px; width: 100%; height: calc(100% - 60px);">
-        <div class="main_section">
+    <main>
 
-            <div class="sidenav">
+        <div class="sidenav">
                 <button id="buttonColorSpace" class="btn btn-icons tooltip" onclick="openSideNavTools(this)"><span id="colorSpace-tooltiptext" class="tooltiptext">Colorspaces</span></button>
                 <button id="buttonTransformation" class="btn btn-icons tooltip" onclick="openSideNavTools(this)"><span id="transformation-tooltiptext" class="tooltiptext">Geometric Transformations</span></button>
                 <button id="buttonSmooth" class="btn btn-icons tooltip" onclick="openSideNavTools(this)"><span id="smooth-tooltiptext" class="tooltiptext">Smoothing</span></button>
@@ -80,32 +79,147 @@
 
                 <div id="sideNavToolsColorSpace" class="sidenav-tools">
                     <button id="buttonCloseColorSpace" class="closebtn" onclick="closeSideNavTools(this)">&times;</button>
-                    <form id="formImageFunctionsId" action="{{ url_for('operation', filename=filename, mode='operation') }}" method="POST" enctype="multipart/form-data">
-                        <button type="submit" class="btn-images" value="convertToHSV" name="colorButton" style="background-image: url({{url_for('static', filename='/resources/hsv.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">To HSV</button>
-                        <button type="submit" class="btn-images" value="convertToGRAY" name="colorButton" style="background-image: url({{url_for('static', filename='/resources/gray.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">To Gray</button>
-                        <button type="submit" class="btn-images" value="convertToLAB" name="colorButton" style="background-image: url({{url_for('static', filename='/resources/lab.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">To LAB</button>
-                        <button type="submit" class="btn-images" value="convertToRGB" name="colorButton" style="background-image: url({{url_for('static', filename='/resources/rgb.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">To RGB</button>
+                    <div class="titleSectionTools">Colorspaces</div>
+                    <form id="formImageFunctionsId" action="{{ url_for('operation', filename=filename, mode='color_space') }}" method="POST" enctype="multipart/form-data">
+                        <button type="submit" class="btn-images" value="convertToHSV" name="colorButton" style="background-image: url({{url_for('static', filename='/resources/hsv.jpg')}});">To HSV</button>
+                        <button type="submit" class="btn-images" value="convertToGRAY" name="colorButton" style="background-image: url({{url_for('static', filename='/resources/gray.jpg')}});">To Gray</button>
+                        <button type="submit" class="btn-images" value="convertToLAB" name="colorButton" style="background-image: url({{url_for('static', filename='/resources/lab.jpg')}});">To LAB</button>
+                        <button type="submit" class="btn-images" value="convertToRGB" name="colorButton" style="background-image: url({{url_for('static', filename='/resources/rgb.jpg')}});">To RGB</button>
                     </form>
                 </div>
 
                 <div id="sideNavToolsTransformation" class="sidenav-tools">
                     <button id="buttonCloseTransformation" class="closebtn" onclick="closeSideNavTools(this)">&times;</button>
+                    <div class="titleSectionTools">Geometric Transformations</div>
+                    <form id="formImageTransformationId" action="{{ url_for('operation', filename=filename, mode='geometric_transformation') }}" method="POST" enctype="multipart/form-data">
+                        <div class="titleInnerSectionTools">Scaling</div>
+                        <div class="row">
+                            <label for="textInputWidthSizeId">Width:</label>
+                            <input type="number" id="textInputWidthSizeId" name="textInputWidthSize" size="3">
+                            <label for="textInputHeightSizeId">Height:</label>
+                            <input type="number" id="textInputHeightSizeId" name="textInputHeightSize" size="3">
+                           <!-- <div class="column">
+                                <label for="textInputWidthSizeId">Width:</label>
+                                <label for="textInputHeightSizeId">Height:</label>
+                            </div>
+                            <div class="column">
+                                <input type="number" id="textInputWidthSizeId" name="textInputWidthSize">
+                                <input type="number" id="textInputHeightSizeId" name="textInputHeightSize">
+                            </div>-->
+
+                            <div class="row">
+                                <input type="radio" id="radioUnitsPxId" name="radioUnits" value="px" checked>
+                                <label for="radioUnitsPxId">px</label>
+                                <input type="radio" id="radioUnitsPercId" name="radioUnits" value="perc">
+                                <label for="radioUnitsPercId">%</label>
+                            </div>
+
+                        </div>
+                        <div class="btnCenterToolsContainer">
+                            <button type="submit" form="formImageTransformationId" class="btnCenterTools" value="scale" name="transformationButton" style=" font-family: 'Nunito', sans-serif; font-weight:700;">Scale</button>
+                        </div>
+
+
+                        <hr>
+
+                        <div class="titleInnerSectionTools">Rotation</div>
+                        <div class="row">
+                            <label for="textInputAngleId">Angle:</label>
+                            <input type="number" id="textInputAngleId" name="textInputAngle">
+                            <label for="textInputAngleId">°</label>
+                        </div>
+
+                        <div class="btnCenterToolsContainer">
+                        <button type="submit" form="formImageTransformationId" class="" value="rotate" name="transformationButton" style=" font-family: 'Nunito', sans-serif; font-weight:700;">Rotate</button>
+                        </div>
+                        <hr>
+
+                        <div class="titleInnerSectionTools">Cropping</div>
+                        <div class="row">
+                            <div class="column">
+                                <label for="textInputTopCropId">Top:</label>
+                                <label for="textInputBottomCropId">Bottom:</label>
+                            </div>
+                            <div class="column">
+                                <input type="number" id="textInputTopCropId" name="textInputTopCrop" size="3">
+                                <input type="number" id="textInputBottomCropId" name="textInputBottomCrop" size="3">
+                            </div>
+                            <div class="column">
+                                <label for="textInputTopCropId">°</label>
+                                <label for="textInputBottomCropId">°</label>
+                            </div>
+                            <div class="column">
+                                <label for="textInputCropLeftId">Left:</label>
+                                <label for="textInputCropRightId">Right:</label>
+                            </div>
+                            <div class="column">
+                                <input type="number" id="textInputCropLeftId" name="textInputLeftCrop" size="3">
+                                <input type="number" id="textInputCropRightId" name="textInputRightCrop" size="3">
+                            </div>
+                            <div class="column">
+                                <label for="textInputCropLeftId">°</label>
+                                <label for="textInputCropRightId">°</label>
+                            </div>
+                        </div>
+
+                        <div class="btnCenterToolsContainer">
+                        <button type="submit" form="formImageTransformationId" class="" value="crop" name="transformationButton" style=" font-family: 'Nunito', sans-serif; font-weight:700;">Crop</button>
+                        </div>
+                    </form>
+
+
+
+
                 </div>
 
                 <div id="sideNavToolsSmooth" class="sidenav-tools">
+
                     <button id="buttonCloseSmooth" class="closebtn" onclick="closeSideNavTools(this)">&times;</button>
+                     <div class="titleSectionTools">Smoothing</div>
+
+                    <form id="formImageSmoothId" action="{{ url_for('operation', filename=filename, mode='smooth') }}" method="POST" enctype="multipart/form-data">
+                        <div class="titleInnerSectionTools">Gaussian Blur</div>
+                        <div class="btnCenterToolsContainer">
+                        <button type="submit" form="formImageSmoothId" class="" value="gaussian_blur" name="blurButton" style=" font-family: 'Nunito', sans-serif; font-weight:700;">Blur</button>
+                        </div>
+                    </form>
                 </div>
 
                 <div id="sideNavToolsEdge" class="sidenav-tools">
                     <button id="buttonCloseEdge" class="closebtn" onclick="closeSideNavTools(this)">&times;</button>
+                    <div class="titleSectionTools">Edge Detection</div>
+                    <form id="formImageEdgeDetectingId" action="{{ url_for('operation', filename=filename, mode='edge_detecting') }}" method="POST" enctype="multipart/form-data">
+                        <div class="btnCenterToolsContainer">
+                        <button type="submit" form="formImageEdgeDetectingId" class="" value="edge_detecting" name="edgeDetectingButton" style=" font-family: 'Nunito', sans-serif; font-weight:700;">Detect</button>
+                        </div>
+                        <button type="submit" class="btn-images" value="template_1" name="edgeDetectionButton" style="background-image: url({{url_for('static', filename='/resources/edge_detection_template_1.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">#1</button>
+                        <button type="submit" class="btn-images" value="template_2" name="edgeDetectionButton" style="background-image: url({{url_for('static', filename='/resources/edge_detection_template_2.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">#2</button>
+                        <button type="submit" class="btn-images" value="template_3" name="edgeDetectionButton" style="background-image: url({{url_for('static', filename='/resources/edge_detection_template_3.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">#3</button>
+                        <button type="submit" class="btn-images" value="template_4" name="edgeDetectionButton" style="background-image: url({{url_for('static', filename='/resources/edge_detection_template_4.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">#4</button>
+                        <button type="submit" class="btn-images" value="template_5" name="edgeDetectionButton" style="background-image: url({{url_for('static', filename='/resources/edge_detection_template_5.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">#5</button>
+                        <button type="submit" class="btn-images" value="template_6" name="edgeDetectionButton" style="background-image: url({{url_for('static', filename='/resources/edge_detection_template_6.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">#6</button>
+                        <button type="submit" class="btn-images" value="template_7" name="edgeDetectionButton" style="background-image: url({{url_for('static', filename='/resources/edge_detection_template_8.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">#7</button>
+                    </form>
                 </div>
 
                 <div id="sideNavToolsGradient" class="sidenav-tools">
                     <button id="buttonCloseGradient" class="closebtn" onclick="closeSideNavTools(this)">&times;</button>
+                    <div class="titleSectionTools">Gradient</div>
+                    <form id="formImageGradientId" action="{{ url_for('operation', filename=filename, mode='gradient') }}" method="POST" enctype="multipart/form-data">
+                        <div class="btnCenterToolsContainer">
+                        <button type="submit" form="formImageGradientId" class="" value="gradient" name="gradientButton" style=" font-family: 'Nunito', sans-serif; font-weight:700;">Gradient</button>
+                        </div>
+                        <button type="submit" class="btn-images" value="x_direction" name="gradientButton" style="background-image: url({{url_for('static', filename='/resources/gradient_x_direction.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">X Direction</button>
+                        <button type="submit" class="btn-images" value="y_direction" name="gradientButton" style="background-image: url({{url_for('static', filename='/resources/gradient_y_direction.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">Y Direction</button>
+                        <button type="submit" class="btn-images" value="x_y_direction" name="gradientButton" style="background-image: url({{url_for('static', filename='/resources/gradient_x_y_direction.jpg')}}); font-family: 'Nunito', sans-serif; font-weight:700;">X & Y Direction</button>
+                    </form>
                 </div>
 
               </div>
-    
+
+        <div class="main_section">
+
+
             <div class="workspace">
 
                 {% if filename != 'None' %}
