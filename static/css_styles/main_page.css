@@ -15,7 +15,6 @@
     flex-direction: row;
     overflow: hidden;
     height: 60px;
-
 }
 
 .centered-column-width {
@@ -23,14 +22,11 @@
     margin-right: 5px;
 }
 
-
-/* Change the color of links on hover */
 .topnav-transparent a:hover {
     background-color: #ddd;
     color: black;
 }
-  
-  /* Add a color to the active/current link */
+
 .topnav-transparent a.active {
     background-color: #4CAF50;
     color: white;
@@ -47,7 +43,6 @@
     margin: auto;
 }
 
-/* unvisited link */
 .nav_link:link {
   color:  #f2f2f2;
   background-color: transparent;
@@ -57,7 +52,6 @@
   font-size: 18px;
 }
 
-/* visited link */
 .nav_link:visited {
   color:  #f2f2f2;
   background-color: transparent;
@@ -67,7 +61,6 @@
   font-size: 18px;
 }
 
-/* mouse over link */
 .nav_link:hover {
   color:  #f2f2f2;
   background-color: transparent;
@@ -77,7 +70,6 @@
   font-size: 18px;
 }
 
-/* selected link */
 .nav_link:active {
   color:  #f2f2f2;
   background-color: transparent;
@@ -87,11 +79,9 @@
   font-size: 18px;
 } 
 
-/* unvisited link */
 .nav_button:link {
   color:  #f2f2f2;
-  background-image: linear-gradient(to right, #8860d0 ,#5680e9);
-  background-color: #8860d0; /* For browsers that do not support gradients */
+  background-color: #5680e9;
   border: 2px solid green;
   text-align: center;
   text-decoration: none;
@@ -101,11 +91,9 @@
   border: none;
 }
 
-/* visited link */
 .nav_button:visited {
   color:  #f2f2f2;
-  background-image: linear-gradient(to right, #8860d0 ,#5680e9);
-  background-color: #8860d0; /* For browsers that do not support gradients */
+  background-color: #5680e9;
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
@@ -115,11 +103,9 @@
   border: none;
 }
 
-/* mouse over link */
 .nav_button:hover {
   color:  #f2f2f2;
-  background-image: linear-gradient(to right, #8860d0 ,#5680e9);
-  background-color: #8860d0; /* For browsers that do not support gradients */
+  background-color: #3466e5;
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
@@ -130,11 +116,9 @@
   opacity: 0.9;
 }
 
-/* selected link */
 .nav_button:active {
   color:  #f2f2f2;
-  background-image: linear-gradient(to right, #8860d0 ,#5680e9);
-  background-color: #8860d0; /* For browsers that do not support gradients */
+  background-color: #1744b5;
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
@@ -142,13 +126,11 @@
   font-size: 18px;
   border-radius: 20px;
   border: none;
-  background-image: linear-gradient(to right, #653faa ,#3361d4);
 }
 
 .nav_button-inactive:link {
   color:  #f2f2f2;
-  background-image: linear-gradient(to right, #8860d0 ,#5680e9);
-  background-color: #8860d0; /* For browsers that do not support gradients */
+  background-color: #5680e9;
   border: 2px solid green;
   opacity: 0.9;
   text-align: center;
@@ -163,8 +145,7 @@
 
 .nav_button-inactive:visited {
   color:  #f2f2f2;
-  background-image: linear-gradient(to right, #8860d0 ,#5680e9);
-  background-color: #8860d0; /* For browsers that do not support gradients */
+  background-color: #5680e9;
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
@@ -177,11 +158,9 @@
   cursor:pointer;
 }
 
-/* mouse over link */
 .nav_button-inactive:hover {
   color:  #f2f2f2;
-  background-image: linear-gradient(to right, #8860d0 ,#5680e9);
-  background-color: #8860d0; /* For browsers that do not support gradients */
+  background-color: #3466e5;
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
@@ -194,11 +173,9 @@
   cursor:pointer;
 }
 
-/* selected link */
 .nav_button-inactive:active {
   color:  #f2f2f2;
-  background-image: linear-gradient(to right, #8860d0 ,#5680e9);
-  background-color: #8860d0; /* For browsers that do not support gradients */
+  background-color: #1744b5;
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
@@ -207,7 +184,6 @@
   font-size: 18px;
   border-radius: 20px;
   border: none;
-  background-image: linear-gradient(to right, #653faa ,#3361d4);
   pointer-events: none;
   cursor:pointer;
 }
@@ -224,9 +200,7 @@ main {
 .main_section {
     height: 100%;
     display: flex;
-    /**/
     flex-direction: column;
-    /**/
     width: calc(100% - 60px);
 }
 
@@ -249,12 +223,10 @@ main {
     background-color: #a689dc;
     height: 40px;
     z-index: 997;
-
 }
 
 .navbar .btn {
-    /*background-color: #8860d0;*/  /*For browsers that do not support gradients*/
-    background-image: linear-gradient(to right, #8860d0 ,#5680e9);
+    background-color: #5680e9;
     color: #f2f2f2;
     border: none;
     padding: 8px 25px;
@@ -266,13 +238,13 @@ main {
 }
 
 .navbar .btn:hover {
-    background-image: linear-gradient(to right, #8860d0 ,#5680e9);
+    background-color: #3466e5;
     opacity: 0.9;
     cursor:pointer;
 }
 
 .navbar .btn:active {
-    background-image: linear-gradient(to right, #653faa ,#3361d4);
+    background-color: #1744b5;
     opacity: 0.9;
     cursor:pointer;
 }
@@ -284,7 +256,7 @@ main {
 
 .text_workspace {
     text-align: center;
-    color: #f2f2f2;
+    color: #7899ed;
     font-size: 35px;
     position: absolute;
     left: 50%;
@@ -294,9 +266,6 @@ main {
 
 .image_workspace {
     position: absolute;
-    /*height: 100%;
-    width: auto;*/
-    /*max-height: 900px;*/
     max-height: 100%;
     left: 50%;
     top: 50%;
@@ -330,32 +299,7 @@ main {
   background-color:transparent;
 }
 
-/*.sidenav-tools .btn-images {
-    *//*background-size: contain;*//*
-    background-size: cover;
-    padding: 56px 101px;
-    color: #f2f2f2;
-    border: none;
-    margin: auto;
-    text-align: center;
-    text-decoration: none;
-    font-size: 17px;
-    border-radius: 5px;
-    cursor:pointer;
-    margin-left: 6.325px;
-    margin-right: 6.325px;
-    margin-bottom: 5px;
-
-    *//**//*
-    max-height: 160px;
-    *//*max-width: 239.867px;*//*
-    max-width: 237px;
-    font-family: 'Nunito', sans-serif;
-    font-weight:700;
-}*/
-
 .sidenav-tools .btn-images {
-
     background-size: cover;
     padding: 56px 101px;
     color: #f2f2f2;
@@ -369,7 +313,6 @@ main {
     margin-left: 6.325px;
     margin-right: 6.325px;
     margin-bottom: 5px;
-
     height: 158px;
     width: 237px;
     font-family: 'Nunito', sans-serif;
@@ -378,7 +321,6 @@ main {
 
 
 .sidenav-tools .btn-images-small {
-    /*background-size: contain;*/
     background-size: cover;
     padding: 56px 101px;
     color: #f2f2f2;
@@ -392,17 +334,13 @@ main {
     margin-left: 6.325px;
     margin-right: 6.325px;
     margin-bottom: 5px;
-
-    /**/
     height: 158px;
-    /*max-width: 239.867px;*/
     width: 222px;
     font-family: 'Nunito', sans-serif;
     font-weight:700;
 }
 
 .sidenav-tools .btn-images-big {
-    /*background-size: contain;*/
     background-size: cover;
     padding: 56px 101px;
     color: #f2f2f2;
@@ -416,39 +354,30 @@ main {
     margin-left: 6.325px;
     margin-right: 6.325px;
     margin-bottom: 5px;
-
-    /**/
     height: 158px;
-    /*max-width: 239.867px;*/
     width: 237px;
     font-family: 'Nunito', sans-serif;
     font-weight:700;
 }
 
 .sidenav-tools .with_text {
-
     padding: 56px 101px;
     color: #f2f2f2;
-
     text-align: center;
     text-decoration: none;
     font-size: 17px;
     margin-left: 6.325px;
     margin-right: 6.325px;
     margin-bottom: 5px;
-
     font-family: 'Nunito', sans-serif;
     font-weight:700;
 }
 
 .sidenav-tools .without_text {
-
     padding: 56px 101px;
-
     margin-left: 6.325px;
     margin-right: 6.325px;
     margin-bottom: 15px;
-
 }
 
 .sidenav-tools .btn-images:hover{
@@ -557,7 +486,6 @@ main {
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
-  /* Position the tooltip */
   position: absolute;
   z-index: 999;
   left: 60px;
@@ -602,7 +530,6 @@ main {
   cursor: pointer;
   font-family: 'Nunito', sans-serif;
   font-weight:300;
-
 }
 
 .dropbtn:hover, .dropbtn:focus {
@@ -610,7 +537,7 @@ main {
 }
 
 .dropdown {
-  margin-right: 100px;
+  margin-right: 5px;
   position: relative;
   display: inline-block;
 }
@@ -635,7 +562,10 @@ main {
 
 .dropdown a:hover {background-color: #ddd;}
 
-.show {display: block;}
+.show {
+    display: block;
+
+}
 
 .caret {
     width: 0;
@@ -690,7 +620,6 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
-
 }
 
 .row {
@@ -719,7 +648,6 @@ input[type=number] {
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
-
 }
 
 .row label {
@@ -748,7 +676,6 @@ hr {
     color: #f2f2f2;
     font-family: 'Nunito', sans-serif;
     font-weight:300;
-
     border: none;
     padding: 8px 25px;
     text-align: center;
@@ -770,4 +697,14 @@ hr {
     box-shadow: 3px 0 3px -3px #333;
 }
 
+.partSideNavToolsColorSpace {}
 
+.partSideNavToolsTransformation {}
+
+.partSideNavToolsSmooth {}
+
+.partSideNavToolsEdge {}
+
+.partSideNavToolsGradient {}
+
+.partSideNavToolsFilter {}

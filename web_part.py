@@ -6,6 +6,7 @@ import numpy as np
 
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory, send_file
 from image_processing import ImageEditor, GradientType
+from other_functions import generate_imagename
 
 app = Flask(__name__)
 app.config['UPLOAD_PATH'] = 'uploads'
@@ -31,10 +32,9 @@ def main_page(image_name):
 @app.route('/main_page/<image_name>', methods=['POST'])
 def upload_image(image_name):
     uploaded_image = request.files['file']
+
     if uploaded_image.filename != '':
-
         file_extension = uploaded_image.filename.split('.')[1]
-
         new_image_name = generate_imagename(file_extension)
         uploaded_image.save(os.path.join(app.config['UPLOAD_PATH'], new_image_name))
 
@@ -57,18 +57,21 @@ def operation(filename, mode):
     if mode == 'color_space':
         if request.form['colorButton'] == 'convertToHSV':
             path_new_image = image_editor.convert_to_hsv(os.path.join(app.config['UPLOAD_PATH'], filename))
+
         elif request.form['colorButton'] == 'convertToGRAY':
             path_new_image = image_editor.convert_to_gray(os.path.join(app.config['UPLOAD_PATH'], filename))
+
         elif request.form['colorButton'] == 'convertToLAB':
             path_new_image = image_editor.convert_to_lab(os.path.join(app.config['UPLOAD_PATH'], filename))
+
         elif request.form['colorButton'] == 'convertToRGB':
             path_new_image = image_editor.convert_to_rgb(os.path.join(app.config['UPLOAD_PATH'], filename))
 
     elif mode == 'geometric_transformation':
+
         if request.form['transformationButton'] == 'scale':
-            print('scale')
+
             if request.form['radioUnits'] == 'px':
-                print('px')
                 width = int(request.form['textInputWidthSize'])
                 height = int(request.form['textInputHeightSize'])
 
@@ -76,7 +79,6 @@ def operation(filename, mode):
                                                            height)
 
             elif request.form['radioUnits'] == 'perc':
-                print('perc')
                 width = int(request.form['textInputWidthSize'])
                 height = int(request.form['textInputHeightSize'])
 
@@ -84,7 +86,6 @@ def operation(filename, mode):
                                                            height)
 
         elif request.form['transformationButton'] == 'rotate':
-            print('rotate')
             angle = int(request.form['textInputAngle'])
             path_new_image = image_editor.rotate(os.path.join(app.config['UPLOAD_PATH'], filename), angle)
 
@@ -98,8 +99,8 @@ def operation(filename, mode):
                                                  crop_bottom, crop_left, crop_right)
 
     elif mode == 'smooth':
+
         if request.form['blurButton'] == 'gaussian_blur':
-            print('smooth')
             height_kernel = int(request.form['textInputKernelHeight'])
             width_kernel = int(request.form['textInputKernelWidth'])
 
@@ -108,6 +109,7 @@ def operation(filename, mode):
 
         elif request.form['blurButton'] == 'median_blur':
             kernel_median_value = int(request.form['textInputKernelMedianValue'])
+
             path_new_image = image_editor.median_blur(os.path.join(app.config['UPLOAD_PATH'], filename),
                                                       kernel_median_value)
 
@@ -116,58 +118,63 @@ def operation(filename, mode):
         if request.form['edgeDetectionButton'] == 'edge_detecting_manual':
             min_value = int(request.form['textInputMinValueEdge'])
             max_value = int(request.form['textInputMaxValueEdge'])
+
             path_new_image = image_editor.detect_edges(os.path.join(app.config['UPLOAD_PATH'], filename), min_value,
                                                        max_value)
 
         elif request.form['edgeDetectionButton'] == 'template_1':
-            print('edge_detecting')
             path_new_image = image_editor.detect_edges(os.path.join(app.config['UPLOAD_PATH'], filename), 50, 50)
 
         elif request.form['edgeDetectionButton'] == 'template_2':
             path_new_image = image_editor.detect_edges(os.path.join(app.config['UPLOAD_PATH'], filename), 50, 100)
+
         elif request.form['edgeDetectionButton'] == 'template_3':
             path_new_image = image_editor.detect_edges(os.path.join(app.config['UPLOAD_PATH'], filename), 50, 150)
+
         elif request.form['edgeDetectionButton'] == 'template_4':
             path_new_image = image_editor.detect_edges(os.path.join(app.config['UPLOAD_PATH'], filename), 50, 200)
+
         elif request.form['edgeDetectionButton'] == 'template_5':
             path_new_image = image_editor.detect_edges(os.path.join(app.config['UPLOAD_PATH'], filename), 50, 300)
+
         elif request.form['edgeDetectionButton'] == 'template_6':
             path_new_image = image_editor.detect_edges(os.path.join(app.config['UPLOAD_PATH'], filename), 100, 300)
+
         elif request.form['edgeDetectionButton'] == 'template_7':
             path_new_image = image_editor.detect_edges(os.path.join(app.config['UPLOAD_PATH'], filename), 100, 150)
 
     elif mode == 'gradient':
+
         if request.form['gradientButton'] == 'x_direction':
             path_new_image = image_editor.gradient(os.path.join(app.config['UPLOAD_PATH'], filename),
                                                    GradientType.X_Direction)
+
         elif request.form['gradientButton'] == 'y_direction':
             path_new_image = image_editor.gradient(os.path.join(app.config['UPLOAD_PATH'], filename),
                                                    GradientType.Y_Direction)
+
         elif request.form['gradientButton'] == 'x_y_direction':
             path_new_image = image_editor.gradient(os.path.join(app.config['UPLOAD_PATH'], filename),
                                                    GradientType.X_Y_Direction)
+
     elif mode == 'filter':
+
         if request.form['filterButton'] == 'cartoon_filter':
             path_new_image = image_editor.cartoon_filter(os.path.join(app.config['UPLOAD_PATH'], filename))
+
         elif request.form['filterButton'] == 'watercolor_filter':
             path_new_image = image_editor.watercolor_filter(os.path.join(app.config['UPLOAD_PATH'], filename))
+
         elif request.form['filterButton'] == 'sketch_filter':
             path_new_image = image_editor.sketch_filter(os.path.join(app.config['UPLOAD_PATH'], filename))
+
         elif request.form['filterButton'] == 'black_white_sketch_filter':
             path_new_image = image_editor.black_white_sketch_filter(os.path.join(app.config['UPLOAD_PATH'], filename))
+
         elif request.form['filterButton'] == 'colored_sketch_filter':
             path_new_image = image_editor.colored_sketch_filter(os.path.join(app.config['UPLOAD_PATH'], filename))
 
     return redirect(url_for('main_page', image_name=path_new_image))
-
-
-def generate_imagename(extension):
-    number_of_characters = 7
-    image_name = ''.join(random.choices(string.ascii_lowercase + string.digits, k=number_of_characters))
-    image_name = image_name + '.' + extension
-    print(image_name)
-
-    return image_name
 
 
 if __name__ == "__main__":

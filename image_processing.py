@@ -4,6 +4,7 @@ import enum
 
 from other_functions import generate_imagename
 
+
 class GradientType(enum.Enum):
    X_Direction = 1
    Y_Direction = 2
@@ -17,6 +18,7 @@ class ImageEditor:
 
     def convert_to_hsv(self, path):
         image = cv.imread(path)
+
         hsv = cv.cvtColor(image, cv.COLOR_BGR2HSV)
 
         file_extension = path.split('.')[1]
@@ -28,6 +30,7 @@ class ImageEditor:
 
     def convert_to_gray(self, path):
         image = cv.imread(path)
+
         hsv = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
 
         file_extension = path.split('.')[1]
@@ -39,6 +42,7 @@ class ImageEditor:
 
     def convert_to_lab(self, path):
         image = cv.imread(path)
+
         hsv = cv.cvtColor(image, cv.COLOR_BGR2LAB)
 
         file_extension = path.split('.')[1]
@@ -50,6 +54,7 @@ class ImageEditor:
 
     def convert_to_rgb(self, path):
         image = cv.imread(path)
+
         rgb = cv.cvtColor(image, cv.COLOR_BGR2RGB)
 
         file_extension = path.split('.')[1]
@@ -64,13 +69,12 @@ class ImageEditor:
 
         width = int(image.shape[1] * scale_percent_x / 100)
         height = int(image.shape[0] * scale_percent_y / 100)
-
         dsize = (width, height)
 
         res = cv.resize(image, dsize)
 
         file_extension = path.split('.')[1]
-        edited_image_name =  generate_imagename(file_extension)
+        edited_image_name = generate_imagename(file_extension)
 
         cv.imwrite(os.path.join('uploads', edited_image_name), res)
 
@@ -81,13 +85,12 @@ class ImageEditor:
 
         width = scale_pixels_x
         height = scale_pixels_y
-
         dsize = (width, height)
 
         res = cv.resize(image, dsize)
 
         file_extension = path.split('.')[1]
-        edited_image_name =  generate_imagename(file_extension)
+        edited_image_name = generate_imagename(file_extension)
 
         cv.imwrite(os.path.join('uploads', edited_image_name), res)
 
@@ -100,7 +103,6 @@ class ImageEditor:
         height, width = image.shape[0:2]
 
         rotation_matrix = cv.getRotationMatrix2D((width / 2, height / 2), angle, .5)
-        # rotation_matrix = cv.getRotationMatrix2D((width/2, height/2), angle, 1)
         res = cv.warpAffine(image, rotation_matrix, (width, height))
 
         file_extension = path.split('.')[1]
@@ -114,14 +116,10 @@ class ImageEditor:
         image = cv.imread(path)
 
         height, width = image.shape[0:2]
-        print(.15)
 
         start_row = int(height * crop_top/100)
-
         start_col = int(width * crop_left/100)
-
         end_row = int(height * ((100-crop_bottom)/100))
-
         end_col = int(width * ((100 - crop_right)/100))
 
         res = image[start_row:end_row, start_col:end_col]
@@ -174,8 +172,10 @@ class ImageEditor:
 
         if gradient_type == GradientType.X_Direction:
             res = cv.Sobel(image, cv.CV_8UC1, 1, 0)
+
         elif gradient_type == GradientType.Y_Direction:
             res = cv.Sobel(image, cv.CV_8UC1, 0, 1)
+
         elif gradient_type == GradientType.X_Y_Direction:
             image_x = cv.Sobel(image, cv.CV_8UC1, 0, 1)
             image_y = cv.Sobel(image, cv.CV_8UC1, 1, 0)
@@ -190,8 +190,8 @@ class ImageEditor:
 
     def sketch_filter(self, path):
         image = cv.imread(path)
-        img_rgb = cv.cvtColor(image, cv.COLOR_BGR2RGB)
 
+        img_rgb = cv.cvtColor(image, cv.COLOR_BGR2RGB)
         img_gray = cv.cvtColor(img_rgb, cv.COLOR_BGR2GRAY)
         img_blur = cv.GaussianBlur(img_gray, (21, 21), 0, 0)
         img_blend = cv.divide(img_gray, img_blur, scale=256)
@@ -205,9 +205,9 @@ class ImageEditor:
 
     def sketch_filter_canvas(self, path):
         image = cv.imread(path)
+
         img_rgb = cv.cvtColor(image, cv.COLOR_BGR2RGB)
         canvas = cv.imread(path, cv.CV_8UC1)
-
         img_gray = cv.cvtColor(img_rgb, cv.COLOR_BGR2GRAY)
         img_blur = cv.GaussianBlur(img_gray, (21, 21), 0, 0)
         img_blend = cv.divide(img_gray, img_blur, scale=256)
@@ -223,6 +223,7 @@ class ImageEditor:
 
     def watercolor_filter(self, path):
         image = cv.imread(path)
+
         res = cv.stylization(image, sigma_s=60, sigma_r=0.6)
 
         file_extension = path.split('.')[1]
