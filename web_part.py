@@ -100,10 +100,26 @@ def operation(filename, mode):
     elif mode == 'smooth':
         if request.form['blurButton'] == 'gaussian_blur':
             print('smooth')
-            path_new_image = image_editor.gaussian_blur(os.path.join(app.config['UPLOAD_PATH'], filename))
+            height_kernel = int(request.form['textInputKernelHeight'])
+            width_kernel = int(request.form['textInputKernelWidth'])
+
+            path_new_image = image_editor.gaussian_blur(os.path.join(app.config['UPLOAD_PATH'], filename), width_kernel,
+                                                        height_kernel)
+
+        elif request.form['blurButton'] == 'median_blur':
+            kernel_median_value = int(request.form['textInputKernelMedianValue'])
+            path_new_image = image_editor.median_blur(os.path.join(app.config['UPLOAD_PATH'], filename),
+                                                      kernel_median_value)
 
     elif mode == 'edge_detecting':
-        if request.form['edgeDetectionButton'] == 'template_1':
+
+        if request.form['edgeDetectionButton'] == 'edge_detecting_manual':
+            min_value = int(request.form['textInputMinValueEdge'])
+            max_value = int(request.form['textInputMaxValueEdge'])
+            path_new_image = image_editor.detect_edges(os.path.join(app.config['UPLOAD_PATH'], filename), min_value,
+                                                       max_value)
+
+        elif request.form['edgeDetectionButton'] == 'template_1':
             print('edge_detecting')
             path_new_image = image_editor.detect_edges(os.path.join(app.config['UPLOAD_PATH'], filename), 50, 50)
 
@@ -130,6 +146,17 @@ def operation(filename, mode):
         elif request.form['gradientButton'] == 'x_y_direction':
             path_new_image = image_editor.gradient(os.path.join(app.config['UPLOAD_PATH'], filename),
                                                    GradientType.X_Y_Direction)
+    elif mode == 'filter':
+        if request.form['filterButton'] == 'cartoon_filter':
+            path_new_image = image_editor.cartoon_filter(os.path.join(app.config['UPLOAD_PATH'], filename))
+        elif request.form['filterButton'] == 'watercolor_filter':
+            path_new_image = image_editor.watercolor_filter(os.path.join(app.config['UPLOAD_PATH'], filename))
+        elif request.form['filterButton'] == 'sketch_filter':
+            path_new_image = image_editor.sketch_filter(os.path.join(app.config['UPLOAD_PATH'], filename))
+        elif request.form['filterButton'] == 'black_white_sketch_filter':
+            path_new_image = image_editor.black_white_sketch_filter(os.path.join(app.config['UPLOAD_PATH'], filename))
+        elif request.form['filterButton'] == 'colored_sketch_filter':
+            path_new_image = image_editor.colored_sketch_filter(os.path.join(app.config['UPLOAD_PATH'], filename))
 
     return redirect(url_for('main_page', image_name=path_new_image))
 

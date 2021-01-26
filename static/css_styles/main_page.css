@@ -5,7 +5,7 @@
     top: 0;
     left: 0;
     height: 60px;
-    z-index: 1;
+    z-index: 999;
 }
 
 .navbar {
@@ -15,6 +15,7 @@
     flex-direction: row;
     overflow: hidden;
     height: 60px;
+
 }
 
 .centered-column-width {
@@ -39,6 +40,7 @@
     background: url("../resources/logo2_without_text.png");
     height: 45px;
     width: 41px;
+    margin-left: 5px;
 }
 
 .nav_space {
@@ -222,6 +224,9 @@ main {
 .main_section {
     height: 100%;
     display: flex;
+    /**/
+    flex-direction: column;
+    /**/
     width: calc(100% - 60px);
 }
 
@@ -229,12 +234,22 @@ main {
     width: 60px;
     background-color: #5680e9;
     flex: 60px;
+    z-index: 998;
 }
 
 .workspace {
     width: 100%;
     position: relative;
     background-color: #C1C8E4;
+    height: calc(100% - 40px);
+}
+
+.bottom_side_menu {
+    width: 100%;
+    background-color: #a689dc;
+    height: 40px;
+    z-index: 997;
+
 }
 
 .navbar .btn {
@@ -315,8 +330,56 @@ main {
   background-color:transparent;
 }
 
+/*.sidenav-tools .btn-images {
+    *//*background-size: contain;*//*
+    background-size: cover;
+    padding: 56px 101px;
+    color: #f2f2f2;
+    border: none;
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor:pointer;
+    margin-left: 6.325px;
+    margin-right: 6.325px;
+    margin-bottom: 5px;
+
+    *//**//*
+    max-height: 160px;
+    *//*max-width: 239.867px;*//*
+    max-width: 237px;
+    font-family: 'Nunito', sans-serif;
+    font-weight:700;
+}*/
+
 .sidenav-tools .btn-images {
-    background-size: contain;
+
+    background-size: cover;
+    padding: 56px 101px;
+    color: #f2f2f2;
+    border: none;
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor:pointer;
+    margin-left: 6.325px;
+    margin-right: 6.325px;
+    margin-bottom: 5px;
+
+    height: 158px;
+    width: 237px;
+    font-family: 'Nunito', sans-serif;
+    font-weight:700;
+}
+
+
+.sidenav-tools .btn-images-small {
+    /*background-size: contain;*/
+    background-size: cover;
     padding: 56px 101px;
     color: #f2f2f2;
     border: none;
@@ -331,10 +394,61 @@ main {
     margin-bottom: 5px;
 
     /**/
-    max-height: 160px;
-    max-width: 239.867px;
+    height: 158px;
+    /*max-width: 239.867px;*/
+    width: 222px;
     font-family: 'Nunito', sans-serif;
     font-weight:700;
+}
+
+.sidenav-tools .btn-images-big {
+    /*background-size: contain;*/
+    background-size: cover;
+    padding: 56px 101px;
+    color: #f2f2f2;
+    border: none;
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor:pointer;
+    margin-left: 6.325px;
+    margin-right: 6.325px;
+    margin-bottom: 5px;
+
+    /**/
+    height: 158px;
+    /*max-width: 239.867px;*/
+    width: 237px;
+    font-family: 'Nunito', sans-serif;
+    font-weight:700;
+}
+
+.sidenav-tools .with_text {
+
+    padding: 56px 101px;
+    color: #f2f2f2;
+
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    margin-left: 6.325px;
+    margin-right: 6.325px;
+    margin-bottom: 5px;
+
+    font-family: 'Nunito', sans-serif;
+    font-weight:700;
+}
+
+.sidenav-tools .without_text {
+
+    padding: 56px 101px;
+
+    margin-left: 6.325px;
+    margin-right: 6.325px;
+    margin-bottom: 15px;
+
 }
 
 .sidenav-tools .btn-images:hover{
@@ -421,6 +535,20 @@ main {
     background-image: url("../resources/icon_gradient_hover.png");
 }
 
+#buttonFilter {
+    padding: 16px 15px;
+    margin-left: 13px;
+    margin-right: 9px;
+    background-image: url("../resources/icon_filter.png");
+}
+
+#buttonFilter:hover {
+    padding: 16px 15px;
+    margin-left: 13px;
+    margin-right: 9px;
+    background-image: url("../resources/icon_filter_hover.png");
+}
+
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 120px;
@@ -461,13 +589,20 @@ main {
     top: 230px;
 }
 
+#filter-tooltiptext{
+    top: 280px;
+}
+
 .dropbtn {
   background-color: transparent;
-  color: white;
+  color: #f2f2f2;
   padding: 16px;
-  font-size: 16px;
+  font-size: 18px;
   border: none;
   cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-weight:300;
+
 }
 
 .dropbtn:hover, .dropbtn:focus {
@@ -515,7 +650,7 @@ main {
 }
 
 .caret.down{
-    border-top-color: black;
+    border-top-color: #f2f2f2;
 }
 
 .titleSectionTools {
@@ -536,6 +671,15 @@ main {
     padding-left: 10px;
 }
 
+.titleImageSectionTools {
+    font-family: 'Nunito', sans-serif;
+    font-weight:300;
+    color: #f2f2f2;
+    font-size: 20px;
+    margin-bottom: 2px;
+    padding-left: 10px;
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -546,6 +690,7 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+
 }
 
 .row {
@@ -566,6 +711,10 @@ input[type=number] {
     height: calc(100% - 60px - 40px);
 }
 
+#sideNavToolsFilter {
+    height: calc(100% - 60px - 40px);
+}
+
 .btnCenterToolsContainer {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -577,20 +726,20 @@ input[type=number] {
     font-family: 'Nunito', sans-serif;
     font-weight:300;
     color: #f2f2f2;
-    font-size: 17px;
+    font-size: 14px;
 }
 
 .column label {
     font-family: 'Nunito', sans-serif;
     font-weight:300;
     color: #f2f2f2;
-    font-size: 17px;
+    font-size: 14px;
 }
 
 hr {
     height: 2px;
     background-color: #5680e9;
-    border-width: none;
+    margin-bottom: 20px;
 }
 
 
@@ -607,6 +756,18 @@ hr {
     font-size: 15px;
     border-radius: 10px;
     cursor:pointer;
+}
+
+.bottom_side_shadow {
+    box-shadow: 0 7px 7px -7px #333;
+}
+
+.top_side_shadow {
+    box-shadow: 0 -5px 5px -5px #333;
+}
+
+.right_side-shadow {
+    box-shadow: 3px 0 3px -3px #333;
 }
 
 

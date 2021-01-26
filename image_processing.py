@@ -50,12 +50,12 @@ class ImageEditor:
 
     def convert_to_rgb(self, path):
         image = cv.imread(path)
-        hsv = cv.cvtColor(image, cv.COLOR_BGR2RGB)
+        rgb = cv.cvtColor(image, cv.COLOR_BGR2RGB)
 
         file_extension = path.split('.')[1]
         edited_image_name = generate_imagename(file_extension)
 
-        cv.imwrite(os.path.join('uploads', edited_image_name), hsv)
+        cv.imwrite(os.path.join('uploads', edited_image_name), rgb)
 
         return edited_image_name
 
@@ -133,10 +133,10 @@ class ImageEditor:
 
         return edited_image_name
 
-    def gaussian_blur(self, path):
+    def gaussian_blur(self, path, width_kernel, height_kernel):
         image = cv.imread(path)
 
-        res = cv.GaussianBlur(image, (21, 21), 0)
+        res = cv.GaussianBlur(image, (width_kernel, height_kernel), 0)
 
         file_extension = path.split('.')[1]
         edited_image_name = generate_imagename(file_extension)
@@ -145,6 +145,17 @@ class ImageEditor:
 
         return edited_image_name
 
+    def median_blur(self, path, kernel_median_value):
+        image = cv.imread(path)
+
+        res = cv.medianBlur(image, kernel_median_value)
+
+        file_extension = path.split('.')[1]
+        edited_image_name = generate_imagename(file_extension)
+
+        cv.imwrite(os.path.join('uploads', edited_image_name), res)
+
+        return edited_image_name
 
     def detect_edges(self, path, min_value, max_value):
         image = cv.imread(path)
@@ -176,3 +187,85 @@ class ImageEditor:
         cv.imwrite(os.path.join('uploads', edited_image_name), res)
 
         return edited_image_name
+
+    def sketch_filter(self, path):
+        image = cv.imread(path)
+        img_rgb = cv.cvtColor(image, cv.COLOR_BGR2RGB)
+
+        img_gray = cv.cvtColor(img_rgb, cv.COLOR_BGR2GRAY)
+        img_blur = cv.GaussianBlur(img_gray, (21, 21), 0, 0)
+        img_blend = cv.divide(img_gray, img_blur, scale=256)
+
+        file_extension = path.split('.')[1]
+        edited_image_name = generate_imagename(file_extension)
+
+        cv.imwrite(os.path.join('uploads', edited_image_name), img_blend)
+
+        return edited_image_name
+
+    def sketch_filter_canvas(self, path):
+        image = cv.imread(path)
+        img_rgb = cv.cvtColor(image, cv.COLOR_BGR2RGB)
+        canvas = cv.imread(path, cv.CV_8UC1)
+
+        img_gray = cv.cvtColor(img_rgb, cv.COLOR_BGR2GRAY)
+        img_blur = cv.GaussianBlur(img_gray, (21, 21), 0, 0)
+        img_blend = cv.divide(img_gray, img_blur, scale=256)
+
+        img_blend = cv.multiply(img_blend, canvas, scale=1. / 256)
+
+        file_extension = path.split('.')[1]
+        edited_image_name = generate_imagename(file_extension)
+
+        cv.imwrite(os.path.join('uploads', edited_image_name), img_blend)
+
+        return edited_image_name
+
+    def watercolor_filter(self, path):
+        image = cv.imread(path)
+        res = cv.stylization(image, sigma_s=60, sigma_r=0.6)
+
+        file_extension = path.split('.')[1]
+        edited_image_name = generate_imagename(file_extension)
+
+        cv.imwrite(os.path.join('uploads', edited_image_name), res)
+
+        return edited_image_name
+
+    def black_white_sketch_filter(self, path):
+        image = cv.imread(path)
+
+        res, _ = cv.pencilSketch(image, sigma_s=60, sigma_r=0.07, shade_factor=0.05)
+
+        file_extension = path.split('.')[1]
+        edited_image_name = generate_imagename(file_extension)
+
+        cv.imwrite(os.path.join('uploads', edited_image_name), res)
+
+        return edited_image_name
+
+    def colored_sketch_filter(self, path):
+        image = cv.imread(path)
+
+        _, res = cv.pencilSketch(image, sigma_s=60, sigma_r=0.07, shade_factor=0.05)
+
+        file_extension = path.split('.')[1]
+        edited_image_name = generate_imagename(file_extension)
+
+        cv.imwrite(os.path.join('uploads', edited_image_name), res)
+
+        return edited_image_name
+
+    def cartoon_filter(self, path):
+        image = cv.imread(path)
+
+        res = cv.stylization(image, sigma_s=150, sigma_r=0.25)
+
+        file_extension = path.split('.')[1]
+        edited_image_name = generate_imagename(file_extension)
+
+        cv.imwrite(os.path.join('uploads', edited_image_name), res)
+
+        return edited_image_name
+
+
