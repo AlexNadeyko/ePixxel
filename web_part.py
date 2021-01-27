@@ -178,6 +178,9 @@ def operation(filename, mode):
 
 
 if __name__ == "__main__":
+    if not os.path.exists(app.config['UPLOAD_PATH']):
+        os.makedirs(app.config['UPLOAD_PATH'])
+
     app.run()
 
 
